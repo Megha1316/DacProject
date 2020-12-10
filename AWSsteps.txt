@@ -1,0 +1,139 @@
+aws steps
+
+1.  search aws console
+2.  root--sign in
+        dhotesayali05@gmail.com
+      
+3. click on profile
+      open--my aws console
+
+4. select ---EC2
+    select ---mumbai
+
+5. Step 1: Choose an Amazon Machine Image (AMI)
+       -----Ubuntu Server 20.04 LTS (HVM), SSD
+          Volume Type - ami-0a4a70bd98c6d6441 (64-bit x86)
+
+   Step 2: Choose an Instance Type
+       -----t2.micro
+
+   Step 3: Configure Instance
+       -----launch
+
+6. select--create new key pair
+          ---sd2
+
+7.it will show instance is initiated
+  -- click on that instance
+  -- it will redirect to instance information on EC2 dashboard
+  --shows instance is running
+  --click on instance id --it will show --instance summary
+  -- click on --connect
+  -- again click on --connect
+  -- now it will show the console
+
+8.  ubuntu@ip-172-31-40-20:~$ java -v
+    ubuntu@ip-172-31-40-20:~$ node -v
+    ubuntu@ip-172-31-40-20:~$ sudo apt update
+    ubuntu@ip-172-31-40-20:~$ sudo apt install nodejs
+    ubuntu@ip-172-31-40-20:~$ sudo apt install npm
+    ubuntu@ip-172-31-40-20:~$ node -v
+      v10.19.0
+
+    ubuntu@ip-172-31-40-20:~$ ls
+    ubuntu@ip-172-31-40-20:~$ mkdir iacsd
+    ubuntu@ip-172-31-40-20:~$ ls
+                iacsd
+    ubuntu@ip-172-31-40-20:~$ cd iacsd
+    ubuntu@ip-172-31-40-20:~/iacsd$  touch demo.js
+    ubuntu@ip-172-31-40-20:~/iacsd$ ls
+            demo.js
+     ubuntu@ip-172-31-40-20:~/iacsd$ nano demo.js
+
+    in editor-----
+                  var count =56;
+                  count++;
+                  console.log("result="+count);  
+                  console.log("welcome to aws");
+
+     save it---ctrl+x
+            ---y
+            --enter
+
+   ubuntu@ip-172-31-40-20:~/iacsd$ node demo.js
+           result =57
+           welcome to aws
+
+ubuntu@ip-172-31-40-20:~/iacsd$ ls
+demo.js  hello.js  hello.js.save
+ubuntu@ip-172-31-40-20:~/iacsd$ cd
+ubuntu@ip-172-31-40-20:~$ ls
+iacsd
+ubuntu@ip-172-31-40-20:~$ mkdir webapp
+ubuntu@ip-172-31-40-20:~$ ls
+iacsd  webapp
+ubuntu@ip-172-31-40-20:~$ cd webapp
+ubuntu@ip-172-31-40-20:~/webapp$ touch index.html
+ubuntu@ip-172-31-40-20:~/webapp$ ls
+index.html
+ubuntu@ip-172-31-40-20:~/webapp$ touch server.js
+ubuntu@ip-172-31-40-20:~/webapp$ ls
+index.html  server.js
+ubuntu@ip-172-31-40-20:~/webapp$ nano index.html
+
+     ubuntu@ip-172-31-40-20:~/webapp$ cat index.html
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Iacsd online app</title>
+</head>
+  <body>
+
+<h1>demo nodejs application</h1>
+<hr/>
+<br/>
+<ol>
+   <li>first</li>
+   <li>second></li>
+
+</ol>
+</body>
+</html>
+
+
+
+   
+
+ubuntu@ip-172-31-40-20:~/webapp$ nano server.js
+   
+  GNU nano 4.8                                        server.js                                         Modified  
+var http=require('http');
+var fs=require('fs');
+var url=require('url');
+var onCreateServer=function(request,response){
+var pathname=url.parse(request.url).pathname;
+fs.readFile(pathname.substr(1).function(err,data){
+
+response.writeHead(200,{'Content-Type':'text/html'});
+response.write(data.toString());
+response.end();
+});
+
+};
+var server=http.createServer(onCreateServer);
+server.listen(8081);
+console.log("server running at http://127.0.0.1:8081");
+
+
+
+
+9..go back to ec2 page
+   --click on instance
+   --on instance summary page---select security(pagedown)
+  --click on security group
+  --in inbound rules--edit--Edit inbound rules
+  --add rule--all traffic--anywhere--0.0.0.0/0
+  --save rules
+
+10. run on browser, using port address
+  --- http://portno:8081/index.html
